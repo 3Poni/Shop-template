@@ -1,0 +1,40 @@
+<?php
+
+namespace Vendor\Routing;
+
+use App\Controllers\Controller;
+
+
+class Route {
+
+    public static $routes = [];
+
+    static public function get($uri, $move){
+        $method = $_SERVER['REQUEST_METHOD'];
+        if($method == 'GET' && $uri == urldecode($_SERVER['REQUEST_URI'])) {
+            $controller = explode('@', $move)[0];
+            $method = explode('@', $move)[1];
+            $name = "name";
+            $controller = 'App\Controllers\\'.$controller;
+            $objectController = new $controller;
+            $objectController->$method($name);
+            self::$routes[] = $uri;
+        }
+
+    }
+    static public function post($uri, $move){
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ( $method == 'POST' && $uri == $_SERVER['REQUEST_URI'] ) {
+            $controller = explode('@', $move)[0];
+            $method = explode('@', $move)[1];
+            $controller = 'App\Controllers\\'.$controller;
+            $objectController = new $controller;
+            $objectController->$method();
+            self::$routes[] = $uri;
+        }
+
+    }
+
+}
+
+
