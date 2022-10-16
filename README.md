@@ -1,4 +1,4 @@
-To run this project you pull it and using terminal go /public and type in: php -S 127.0.0.1:8000
+To run this project you pull it and using terminal go /public then type in: php -S 127.0.0.1:8000
 
 There is a small role system includes 2 roles: Admin and User, so there are 2 seeds for Log In: 
 admin - (login: Admin, password: 123123), user (login: Oleg, password: 123123)
