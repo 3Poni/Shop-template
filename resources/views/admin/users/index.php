@@ -7,11 +7,11 @@
                 <?php
                 foreach($users as $user) {
                     echo '<tr class="table-row">';
-                    echo '<td class="table-d"><span>'.$user[1].'</span></td>';
-                    echo '<td class="table-d"><a href="/admin/users/show?id='.$user[0].'">Посмотреть пользователя</a></td>';
-                    echo '<td class="table-d"><a href="/admin/users/edit?id='.$user[0].'">Редактировать пользователя</a></td>
+                    echo '<td class="table-d"><span>'.$user['login'].'</span></td>';
+                    echo '<td class="table-d"><a href="/admin/users/show?id='.$user['id'].'">Посмотреть пользователя</a></td>';
+                    echo '<td class="table-d"><a href="/admin/users/edit?id='.$user['id'].'">Редактировать пользователя</a></td>
                           <td class="table-d"><form action="/admin/users/delete" method="post">
-                                    <input type="hidden" name="id" value="'.$user[0].'">
+                                    <input type="hidden" name="id" value="'.$user['id'].'">
                                     <input type="submit" value="Удалить"></li>
                                </form></td>
 

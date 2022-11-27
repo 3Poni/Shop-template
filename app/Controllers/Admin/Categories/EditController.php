@@ -11,7 +11,7 @@ class EditController extends BaseController
     public static function edit()
     {
         $database = new Category;
-        $category = $database->whereId($_GET['id']);
+        $category = $database->whereId($_GET['id'])[0];
         $view = "/../categories/edit.php";
         require_once __DIR__ . '/../../../../resources/views/admin/layouts/layout.php';
 

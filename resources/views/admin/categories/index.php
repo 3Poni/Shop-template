@@ -7,11 +7,11 @@
                 <?php
                 foreach($categories as $category) {
                     echo '<tr class="table-row">';
-                    echo '<td class="table-d"><span>'.$category[1].'</span></td>';
-                    echo '<td class="table-d"><a href="/admin/categories/show?id='.$category[0].'">Посмотреть категорию</a></td>';
-                    echo '<td class="table-d"><a href="/admin/categories/edit?id='.$category[0].'">Редактировать категорию</a></td>
+                    echo '<td class="table-d"><span>'.$category['name'].'</span></td>';
+                    echo '<td class="table-d"><a href="/admin/categories/show?id='.$category['id'].'">Посмотреть категорию</a></td>';
+                    echo '<td class="table-d"><a href="/admin/categories/edit?id='.$category['id'].'">Редактировать категорию</a></td>
                           <td class="table-d"><form action="/admin/categories/delete" method="post">
-                                    <input type="hidden" name="id" value="'.$category[0].'">
+                                    <input type="hidden" name="id" value="'.$category['id'].'">
                                     <input type="submit" value="Удалить"></li>
                                </form></td>
 

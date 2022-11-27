@@ -12,7 +12,7 @@ class ShowController extends BaseController
     {
 
         $database = new Category;
-        $categories = $database->whereId($_GET['id']);
+        $categories = $database->whereId($_GET['id'])[0];
         $view = "/../categories/show.php";
         require_once __DIR__ . '/../../../../resources/views/admin/layouts/layout.php';
 

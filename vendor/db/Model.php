@@ -2,15 +2,16 @@
 
 namespace Vendor\DB;
 
-use PDO;
 
 class Model
 {
-    public Connection $db;
+    private Connection $db;
+    private ImageManager $file_manager;
 
     public function __construct()
     {
-        $this->db = Connection::getInstance();
+        $this->db = new Connection();
+        $this->file_manager = new ImageManager();
     }
 
     private static function getTableName(): string
@@ -18,106 +19,70 @@ class Model
         return static::$table;
     }
 
-    public function get(): array
+    private function selector(): QuerySelect
     {
-        $sql = "SELECT * FROM " . self::getTableName() . "";
-        return $result = $this->db->select($sql);
+        $builder = new SelectBuilder(self::getTableName());
+        return new QuerySelect($this->db, $builder);
     }
 
-    public function add($columns, $q_data): void
+    public function get(): array
     {
-        $sql = "INSERT INTO " . self::getTableName() . " (";
-        $q_column = array();                                // Массив полей для вставки
-        foreach ($columns as $k => $v) {                        // Пробегаемся по столбцам таблицы
-            $q_column[] = "`" . $v . "`";                        // Обертываем в кавычки
-        }
-        $data = array();                                // Массив значений для SQL
-        $params = array();                              // Массив масок "?" для prepare
-        foreach ($q_data as $el) {                        // Пробегаемся по вставляемым значениям
-            $data[] = htmlspecialchars($el);            // Попытка защиты от XSS атак
-            $params[] = "?";                            // Вставка масок "?" в SQL в нужном количестве
-        }
-        $sql .= join(", ", $q_column) . ") VALUES (";        // Дополняем запрос столбцами
-        $sql .= join(", ", $params) . ")";                 // Дополняем запрос значениями
-        $this->db->query($sql, $data);
+        return $this->selector()->get();
     }
 
     function whereId($id)
     {
-
-        $sql = "SELECT * FROM " . self::getTableName() . " WHERE id = " . $id ."";
-        return $result = $this->db->select($sql);
+        return $this->selector()->where("id = '$id'")->get();
     }
 
-    function where($fk, $column)
+    function where($param, $column): array
     {
-        $sql = "SELECT * FROM " . self::getTableName() . " WHERE " . $column . " = '$fk' ";
-        return $result = $this->db->select($sql);
+        return $this->selector()->where("$column = '$param'")->get();
     }
 
-    function search($column, $s)
+    function search($column, $search): array
     {
-        $sql = "SELECT * FROM " . self::getTableName() . " WHERE " . $column . " LIKE '$s' ";
-        return $result = $this->db->select($sql);
+        return $this->selector()->where($column)->like($search)->get();
     }
 
     function sortBy($column, $method): array
     {
-        $sql = "SELECT * FROM " . self::getTableName() . " ORDER BY " . $column . " " . $method;
-        return $result = $this->db->select($sql);
+        return $this->selector()->where($column)->orderBy($column, $method)->get();
     }
 
-    function count($fk, $column): array
+    function count($param, $column)
     {
-        $sql = "SELECT COUNT(*) FROM " . self::getTableName() . " WHERE " . $column . " = " . $fk;
-        return $result = $this->db->select($sql);
+        return $this->selector()->count()->where("$column = $param")->get();
     }
 
-    function update($columns, $q_data, $id): void // Проведи тест, доделай если нужно
+    public function add($columns, $q_data): bool
     {
-        $sql = "UPDATE " . self::getTableName() . " SET ";
-        $data = array();
-        $params = array();                                  //Массив полей для вставки
-        foreach ($q_data as $el) {                        //Пробегаемся по столбцам
-            $data[] = htmlspecialchars($el);                        //Обертываем в кавычки
-            $params[] = "?";
-        }
-        $q_column = array();                                // Массив полей для вставки
-        foreach ($columns as $k => $v) {                        // Пробегаемся по столбцам таблицы
-            $q_column[] = "`$v` = $params[$k]";                        // Обертываем в кавычки
-        }
-        $sql .= join(", ", $q_column) . " WHERE id = '$id' ";
-        $this->db->query($sql, $data);
+        $this->selector()->insert($columns, $q_data)->execute();
+        return true;
     }
 
-    function delete($id): void
+    function update($columns, $q_data, $id): bool
     {
-        $sql = "DELETE FROM " . self::getTableName() . " WHERE id = " . $id;
-        $result = $this->db->query($sql);;
+        $this->selector()->update($columns, $q_data)->where("id = '$id'")->execute();
+        return true;
+    }
+
+    function delete($id)
+    {
+        $this->selector()->delete()->where("id = '$id'")->execute();
     }
 
     function storage($file): string
     {
-        if ($file['name']) {
-            $filename = $file['name'];
-            $meme = explode('.', $filename);
-            $unq = uniqid();
-            $filename = $unq . '.' . $meme[count($meme) - 1];
-            move_uploaded_file($file['tmp_name'], 'storage/images/' . $filename);
-            return $filename;
+        if ($file['name'] == null) {
+            return 'default_img.jpg';
         } else {
-            $filename = 'default_img.jpg';
-            return $filename;
+            return $this->file_manager->store($file, IMAGES_PATH);  // Returns uniq $filename
         }
     }
 
     function del_image($image): void
     {
-        $file_name = '/../storage/images/' . $image;
-        $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
-        $file_delete = "$base_dir$file_name";   // путь к файлу
-        if (file_exists($file_delete)) {
-            unlink($file_delete);
-        }
+        $this->file_manager->delete($image, IMAGES_PATH);
     }
 }

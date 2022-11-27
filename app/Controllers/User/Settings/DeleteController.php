@@ -12,7 +12,7 @@ class DeleteController extends BaseController
     public static function delete()
 
     {
-        if ($_SESSION['user'][0]['id'] == $_POST['id']){
+        if ($_SESSION['user']['id'] == $_POST['id']){
             $database = new User;
             $users = $database->delete($_POST['id']);
             unset($_SESSION['user']);

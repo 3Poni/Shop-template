@@ -151,13 +151,25 @@ a.menu:hover {
     border-color: gray;
     border-style: solid;
 }
+
+.item-info {
+    width: auto;
+    height: auto;
+    display: flex;
+    margin-top: 20px;
+    justify-content: left;
+    justify-items: left;
+    /*padding-right: 70px;*/
+    align-items: flex-start;
+}
+
 .item-text {
     width: auto;
     height: auto;
     justify-content: left;
     justify-items: left;
     display: flex;
-    padding-right: 70px;
+    /*padding-right: 70px;*/
     align-items: flex-start;
 }
 .items-list {

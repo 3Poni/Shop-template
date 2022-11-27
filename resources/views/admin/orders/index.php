@@ -13,12 +13,12 @@
                 <?php
                 foreach($orders as $order) {
                     echo '<tr class="table-row">';
-                    echo '<td class="table-d"><span>'.$order[0].'</span></td>';
-                    echo '<td class="table-d"><span>'.$order[3].' руб.</span></td>';
+                    echo '<td class="table-d"><span>'.$order['id'].'</span></td>';
+                    echo '<td class="table-d"><span>'.$order['sum'].' руб.</span></td>';
                     echo '<td class="table-d"><span></span></td>';
-                    echo '<td class="table-d"><a href="/admin/orders/show?id='.$order[0].'">Посмотреть заказ</a></td>';
+                    echo '<td class="table-d"><a href="/admin/orders/show?id='.$order['id'].'">Посмотреть заказ</a></td>';
                     echo '     <td class="table-d"><form action="/admin/orders/delete" method="post">
-                                    <input type="hidden" name="id" value="'.$order[0].'">
+                                    <input type="hidden" name="id" value="'.$order['id'].'">
                                     <input type="submit" value="Удалить"></li>
                                </form></td>
 

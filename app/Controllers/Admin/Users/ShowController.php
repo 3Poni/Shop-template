@@ -12,7 +12,7 @@ class ShowController extends BaseController
     {
 
         $database = new User;
-        $users = $database->whereId($_GET['id']);
+        $user = $database->whereId($_GET['id'])[0];
         $view = "/../users/show.php";
         require_once __DIR__ . '/../../../../resources/views/admin/layouts/layout.php';
 

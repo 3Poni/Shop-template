@@ -3,7 +3,7 @@
     <ul>
         <span><?php foreach($items as $item)
         {
-            echo '<li><a href="/show?id='.$item[0].'">'.$item[1].'</a></li><br>';
+            echo '<li><a href="/show?id='.$item['id'].'">'.$item['name'].'</a></li><br>';
         } ?>
         </span>
     </ul>

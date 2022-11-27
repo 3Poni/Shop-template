@@ -1,3 +1,6 @@
+<?php
+$_SESSION['token'] = bin2hex(random_bytes(32));
+?>
  <br>
     <div class="main">
         <div><h2>Форма входа</h2></div><br>
@@ -13,12 +16,13 @@
                     echo '<div class="nav-itm">
                 <a href="/user" class="menu">Личный кабинет пользователя</a>
                 </div>';
-                    echo 'Вы - Пользователь с логином: '.$_SESSION['user'][0]['login'];
+                    echo 'Вы - Пользователь с логином: '.$_SESSION['user']['login'];
                    echo "<br><br><b><a href='/logout'>Выйти</a></b>";
                 }
             else{
                 echo '
                 <form class="form" action="/login" method="post">
+                     <input type="hidden" name="token" id="token" value="'.$_SESSION['token'].'">
                      <label for="login">Логин</label><br>
                      <input class="input-text" type="text" oninput="validate(this)" id="login" name="login" placeholder="введите ваш логин"><br>
                      <label for="login">Пароль</label><br>

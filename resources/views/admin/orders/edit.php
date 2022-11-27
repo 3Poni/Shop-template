@@ -9,7 +9,7 @@
         <select required name="category">
             <option selected="selected" disabled>Выберите категорию</option>
             <?php foreach ($categories as $category){
-                echo "<option value='$category[0]'>".$category[1]."</option>";
+                echo "<option value=".$category['id'].">".$category['name']."</option>";
             }
             ?>
         </select><br><br>

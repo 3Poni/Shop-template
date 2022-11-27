@@ -11,7 +11,7 @@ class UpdateController extends BaseController
 
     public static function update()
     {
-        if ($_SESSION['user'][0]['id'] == $_POST['id']) {
+        if ($_SESSION['user']['id'] == $_POST['id']) {
             $id = $_POST['id'];
             $database = new User;
             $columns = array('login','email');

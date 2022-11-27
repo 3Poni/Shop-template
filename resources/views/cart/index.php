@@ -3,7 +3,8 @@
     <div class="cart">
         <div>
             <ol>
-                <?php if(!empty($_SESSION['cart'])){
+                <?php
+                if(!empty($_SESSION['cart'])){
                     foreach($items as $item) {
                         echo '<div class="item-cart"><li><h2><a href="/show?id='.$item['id'].'">'.$item['name'].'</a></h2><br>';
                         echo "<div id='qty'>Количество штук:".$item['qty'].'</div><br>';
@@ -68,6 +69,4 @@
             let params = "id=" + el.previousSibling.id
             xhr.send(params)
         }
-
-
     </script>

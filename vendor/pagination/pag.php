@@ -19,7 +19,7 @@ class Pag
         $this->items = $items;
         $this->per_page = $per_page;
         $this->page = $_GET['page'] ?? 0;
-        $this->start = $this->page == 0 ? 0 : ($this->per_page * $this->page) - 1;
+        $this->start = $this->page == 0 ? 0 : ($this->per_page * $this->page);
         $this->total = $this->total_count($items);
         $this->count_pages = $this->count_pages($this->total, $this->per_page);
     }
@@ -39,7 +39,7 @@ class Pag
         return $items = array_slice($this->items, $this->start, $this->per_page);
     }
 
-    public function setPerPage($per_page)
+    public function set_per_page($per_page)
     {
         return $this->per_page = $per_page;
     }
@@ -58,7 +58,6 @@ class Pag
                     $uri[$num] .= "?";
             }
             $html .= '<div class="page-item"><a href="' . implode($uri) . 'page=' . $this->id . '">-' . $this->num_page . '-</a></div>';
-
             $this->num_page++;
             $this->id++;
         }

@@ -21,9 +21,9 @@ class StoreController extends Controller {
                 $user_id = '';
                 $status = 'not paid';
                 if(isset($_SESSION['admin'])) {
-                    $user_id = $_SESSION['admin'][0]['id'];
+                    $user_id = $_SESSION['admin']['id'];
                 }else if(isset($_SESSION['user'])){
-                    $user_id = $_SESSION['user'][0]['id'];
+                    $user_id = $_SESSION['user']['id'];
                 }else {
                     header('Location: /login');
                     die;

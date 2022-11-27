@@ -19,12 +19,12 @@
                     }?>
                     <tr class="table-row" style="background-color: lightcyan">
                         <td class="table-d"><span><h2>Итого: </h2></span></td>
-                        <td class="table-d"><span><h2><?php echo $order[0]['sum'];?></h2></span></td>
+                        <td class="table-d"><span><h2><?php echo $order['sum'];?></h2></span></td>
                         <td class="table-d"></td>
                     </tr>
                     <tr class="table-row" style="background-color: lightcyan">
                         <td class="table-d"><span><h2>Статус заказа: </h2></span></td>
-                        <td class="table-d"><span><h2><?php echo $order[0]['status'];?></h2></span></td>
+                        <td class="table-d"><span><h2><?php echo $order['status'];?></h2></span></td>
                         <td class="table-d"></td>
                     </tr>
                 </table>

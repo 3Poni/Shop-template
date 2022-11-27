@@ -1,4 +1,4 @@
-function AddToCart(el) {
+function addToCart(el) {
     const xhr = new XMLHttpRequest()
     xhr.open('POST', '/item/add', true)
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
@@ -37,7 +37,7 @@ function minCart(el) {
         xhr.send(params)
 
         let id = el.nextSibling.id
-        el.parentElement.innerHTML = '<div onclick="AddToCart(this)" class="btn-cart">'
+        el.parentElement.innerHTML = '<div onclick="addToCart(this)" class="btn-cart">'
             +'<input type="hidden" id="name'+id+'" name="id" value="'+id+'">'
             +'<button class="btn-cart-add" type="button" value="'+id+'">В КОРЗИНУ</button>'
             +'</div>'

@@ -11,12 +11,12 @@
                     </tr>
                 <?php
                     echo '<tr class="table-row">';
-                    echo '<td class="table-d"><span>'.$user[1].'</span></td>';
-                    echo '<td class="table-d"><span>'.$user[3].'</span></td>';
-                    echo '<td class="table-d"><a href="/user/edit?id='.$user[0].'">Редактировать данные</a></td>';
+                    echo '<td class="table-d"><span>'.$user['login'].'</span></td>';
+                    echo '<td class="table-d"><span>'.$user['email'].'</span></td>';
+                    echo '<td class="table-d"><a href="/user/edit?id='.$user['id'].'">Редактировать данные</a></td>';
                     echo '<td class="table-d">
                             <form action="/user/delete" method="post">
-                               <input type="hidden" name="id" value="'.$user[0].'">
+                               <input type="hidden" name="id" value="'.$user['id'].'">
                                <input type="submit" value="Удалить аккаунт"></li>
                             </form></td>
                           </tr>'; ?>

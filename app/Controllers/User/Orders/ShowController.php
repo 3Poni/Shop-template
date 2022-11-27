@@ -15,25 +15,26 @@ class ShowController extends BaseController
         $order_id = $_GET['id'];
         $db_order = new Order;
         $order = $db_order->whereId($order_id)[0];
-        if ($_SESSION['user'][0]['id'] == $order['user_id']) {
+//        var_dump($order[0]['user_id']);
+        if ($_SESSION['user']['id'] == $order['user_id']) {
             $db_user = new User;
             $user_id = $order['user_id'];
-            $user = $db_user->whereId($user_id);
-            $ids = explode(',', $order[2]);
+            $user = $db_user->whereId($user_id)[0];
+            $ids = explode(',', $order['items_ids']);
             $db_item = new Item;
             $items = array();
             foreach ($ids as $el) {
                 $id = explode('_', $el)[0];
                 $qty = explode('_', $el)[1];
-                $array = $db_item->whereId($id);
+                $array = $db_item->whereId($id)[0];
                 $items[] = [
-                    'id' => $array[0]['id'],
-                    'name' => $array[0]['name'],
-                    'description' => $array[0]['description'],
-                    'image' => $array[0]['image'],
-                    'price' => $array[0]['price'],
+                    'id' => $array['id'],
+                    'name' => $array['name'],
+                    'description' => $array['description'],
+                    'image' => $array['image'],
+                    'price' => $array['price'],
                     'qty' => $qty,
-                    'user' => $user[0]['login'],
+                    'user' => $user['login'],
                 ];
             }
             $view = "/../orders/show.php";

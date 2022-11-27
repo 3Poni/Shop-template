@@ -12,7 +12,7 @@ class IndexController extends BaseController
     {
 
         $database = new User;
-        $user = $database->whereId($_SESSION['user'][0]['id'])[0];
+        $user = $database->whereId($_SESSION['user']['id'])[0];
         $view = "/../settings/index.php";
         require_once __DIR__ . '/../../../../resources/views/user/layouts/layout.php';
 

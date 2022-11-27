@@ -4,42 +4,35 @@ namespace Vendor\DB;
 
 use PDO;
 use PDOStatement;
-use Vendor\DB\Contracts\IConnection;
 
-class Connection implements IConnection
+class Connection
 {
-    public static $instance;
-    protected PDO $db;
+    protected PDO $pdo;
 
-    public static function getInstance(): static
+    public function __construct()
     {
-        if (static::$instance === null) {
-            static::$instance = new static();
+        if (strtolower(DBDRIVER) == 'mysql') {
+            $this->pdo = new PDO('' . DBDRIVER . ':host=' . DBHOST . ';dbname=' . DBNAME . ';charset=utf8', '' . DBUSER . '',
+                '' . DBPASS . '',
+                [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ]);
+        } elseif (strtolower(DBDRIVER) == 'sqlite') {
+            $this->pdo = new PDO ("sqlite:" . DBPATH);
         }
-
-        return static::$instance;
     }
 
-    protected function __construct()
+    public function select(string $query): ?array
     {
-//        $this->db = new PDO('' . DBDRIVER . ':host=' . DBHOST . ';dbname=' . DBNAME . ';charset=utf8', '' . DBUSER . '', '' . DBPASS . '');
-        $this->db = new PDO ("sqlite:" . "database.sqlite" );
-    }
-
-    public function select(string $query, array $params = []): ?array
-    {
-        return $this->query($query, $params)->fetchAll();
+        return $this->pdo->query($query)->fetchAll();
     }
 
     public function query(string $query, $params = []): PDOStatement
     {
-        $query = $this->db->prepare($query);
+        $query = $this->pdo->prepare($query);
         $query->execute($params);
         return $query;
-    }
-
-    public function __call(string $query, array $params = [])
-    {
-
     }
 }

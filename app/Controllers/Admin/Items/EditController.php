@@ -13,7 +13,7 @@ class EditController extends BaseController
     public static function edit()
     {
         $db_items = new Item;
-        $item = $db_items->whereId($_GET['id']);
+        $item = $db_items->whereId($_GET['id'])[0];
         $db_categories = new Category;
         $categories = $db_categories->get();
         $view = "/../items/edit.php";

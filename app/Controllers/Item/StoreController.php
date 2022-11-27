@@ -12,14 +12,14 @@ class StoreController extends Controller
         {
             $id = $_POST['id'];
             $database = new Item;
-            $item = $database->whereId($id);
-            if (isset($_SESSION['cart'][$item[0][0]])) {
-                $_SESSION['cart'][$item[0][0]]['qty'] += 1;
+            $item = $database->whereId($id)[0];
+            if (isset($_SESSION['cart'][$item['id']])) {
+                $_SESSION['cart'][$item['id']]['qty'] += 1;
             } else {
-                $_SESSION['cart'][$item[0][0]] = [
-                    'name' => $item[0][1],
-                    'id' => $item[0][0],
-                    'price' => $item[0][5],
+                $_SESSION['cart'][$item['id']] = [
+                    'name' => $item['name'],
+                    'id' => $item['id'],
+                    'price' => $item['price'],
                     'qty' => 1,
                 ];
             }
