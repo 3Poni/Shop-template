@@ -7,11 +7,13 @@ class Model
 {
     private Connection $db;
     private ImageManager $file_manager;
+    private SelectBuilder $builder;
 
     public function __construct()
     {
         $this->db = new Connection();
         $this->file_manager = new ImageManager();
+//        $this->builder = new SelectBuilder(self::getTableName());
     }
 
     private static function getTableName(): string
@@ -85,4 +87,22 @@ class Model
     {
         $this->file_manager->delete($image, IMAGES_PATH);
     }
+
+    function join($table, $pk, $fk)
+    {
+        return $this->selector()->join($table, $pk, $fk);
+    }
+
+    function joinWhere($table, $pk, $fk, $order_id)
+    {
+        return $this->selector()->joinWhere($table, $pk, $fk, $order_id);
+    }
+
+    function hasMany($columns, $q_data)
+    {
+        $this->selector()->insert($columns, $q_data);
+        $this->selector()->insert($columns, $q_data);
+        return $this->add($columns, $q_data);
+    }
+
 }

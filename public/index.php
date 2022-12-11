@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 use Vendor\Errorhandler\ErrorHandler;
 
 require "../vendor/errorhandler/errorhandler.php";

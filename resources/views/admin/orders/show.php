@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="action-list">
-        <div class="action"><h2><a href="/admin/users/show?id=<?php echo $user[0]['id'];?> ">Заказ оформил: <?php echo $user[0]['login'];?></a></h2></div>
+        <div class="action"><h2><a href="/admin/users/show?id=<?php echo $user['id'] ?> ">Заказ оформил: <?php echo $user['login']; ?></a></h2></div>
         <div class="main">
             <div class="items-list">
                 <table class="table">

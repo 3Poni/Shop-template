@@ -28,7 +28,8 @@
                         <li>Итого:' . $sum.'</li>
                         <form method="post" action="/cart/buy">';
                                 foreach ($items as $item) {
-                            echo '<input type="hidden" name="id'.$item['id'].'" value="'.$item['id'].'_'.$item['qty'].'">';
+                            echo '<input type="hidden" name="'.$item['id'].'" value="'.$item['qty'].'">';
+//                            echo '<input type="hidden" name="qty" value="'.$item['qty'].'"><br>';
                         }
                             echo'<input type="hidden" name="sum" value="'.$sum.'">
                             <button class="button-submit" type="submit">Отправить заказ</button>

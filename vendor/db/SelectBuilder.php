@@ -16,12 +16,14 @@ class SelectBuilder
     protected array $fields = ['*'];
     protected array $addons = [
         'join' => null,
+        'inner_join' => null,
         'where' => null,
         'group_by' => null,
         'having' => null,
         'order_by' => null,
         'limit' => null,
         'like' => null,
+
     ];
 
     public function __construct(string $table)
@@ -50,6 +52,12 @@ class SelectBuilder
     public function addOrderBy(string $where, $method)
     {
         $this->addons['order_by'] .= ' ' . $where . " " . $method;
+        return $this;
+    }
+
+    public function addInnerJoin(string $table, $pk, $fk)
+    {
+        $this->addons['inner_join'] .= ' `' . $table . "` ON " . $pk ." = " . $table.'.'.$fk;
         return $this;
     }
 

@@ -91,6 +91,19 @@ class QuerySelect
         return $this->db->select($this->builder, $this->binds);
     }
 
+    public function join($table, $pk, $fk)
+    {
+        $this->builder->addInnerJoin($table, $pk, $fk);
+        return $this;
+    }
+
+    public function joinWhere($table, $pk, $fk, $id)
+    {
+        $this->builder->addInnerJoin($table, $pk, $fk);
+        $this->builder->addWhere('order_id = ' . $id);
+        return $this;
+    }
+
     public function execute(): \PDOStatement
     {
 
