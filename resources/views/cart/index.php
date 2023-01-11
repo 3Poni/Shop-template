@@ -6,7 +6,7 @@
                 <?php
                 if(!empty($_SESSION['cart'])){
                     foreach($items as $item) {
-                        echo '<div class="item-cart"><li><h2><a href="/show?id='.$item['id'].'">'.$item['name'].'</a></h2><br>';
+                        echo '<div class="item-cart"><li><h2><a href="items/show/?id='.$item['id'].'">'.$item['name'].'</a></h2><br>';
                         echo "<div id='qty'>Количество штук:".$item['qty'].'</div><br>';
                         echo "Цена:".$item['price'].'<br>';
                         echo "Сумма:".$item['price']*$item['qty'];
@@ -29,7 +29,6 @@
                         <form method="post" action="/cart/buy">';
                                 foreach ($items as $item) {
                             echo '<input type="hidden" name="'.$item['id'].'" value="'.$item['qty'].'">';
-//                            echo '<input type="hidden" name="qty" value="'.$item['qty'].'"><br>';
                         }
                             echo'<input type="hidden" name="sum" value="'.$sum.'">
                             <button class="button-submit" type="submit">Отправить заказ</button>

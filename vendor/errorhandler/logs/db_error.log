@@ -2038,3 +2038,87 @@ Stack trace:
 #1 {main}
   thrown file: E:\OpenServer\domains\pet-project\vendor\errorhandler\errorhandler.php line: 91
 **end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\app\Controllers\Category\ShowController.php line: 18
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\categories\show.php line: 2
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 5
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 5
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 9
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 9
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 12
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 12
+**end**
+**start**
+WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 15
+**end**
+**start**
+WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 15
+**end**

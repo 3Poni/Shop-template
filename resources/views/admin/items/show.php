@@ -11,7 +11,7 @@
         <div class="item-price">
             <h2>Цена: <?php echo $item["price"]; ?> рублей</h2><br>
         </div>
-        <div class="action"><a href="/admin/items/edit?id=<?php echo $item['id'];?>">Редактировать товар</a></div>
+        <div class="action"><a href="/admin/items/edit/?id=<?php echo $item['id'];?>">Редактировать товар</a></div>
         <div class="action">
             <form action="/admin/items/delete" method="post">
                 <input type="hidden" name="id" value="<?php echo $item["id"]; ?>">

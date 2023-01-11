@@ -34,7 +34,6 @@ class ErrorHandler
 
     public function register()
     {
-
         ini_set('display_errors', 'on');
         error_reporting(E_ALL | E_STRICT);
 

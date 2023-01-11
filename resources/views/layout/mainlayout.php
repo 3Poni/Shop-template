@@ -27,7 +27,7 @@
             <a href="/cart" class="menu">Корзина: <?php if(!empty($_SESSION['cart'])){ echo ($_SESSION['cart.qty']);}else echo '0' ?></a>
         </div>
         <div class="nav-search"  >
-            <form method="get" action="/items/search">
+            <form method="get" action="/items/search/">
                 <input class="input-text" name="search" id="search" type="text" placeholder="Что искать?">
             </form>
         </div>

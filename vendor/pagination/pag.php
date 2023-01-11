@@ -20,16 +20,16 @@ class Pag
         $this->per_page = $per_page;
         $this->page = $_GET['page'] ?? 0;
         $this->start = $this->page == 0 ? 0 : ($this->per_page * $this->page);
-        $this->total = $this->total_count($items);
-        $this->count_pages = $this->count_pages($this->total, $this->per_page);
+        $this->total = $this->totalCount($items);
+        $this->count_pages = $this->countPages($this->total, $this->per_page);
     }
 
-    public function total_count($items): int
+    public function totalCount($items): int
     {
         return count($items);
     }
 
-    public function count_pages($total, $per_page): int
+    public function countPages($total, $per_page): int
     {
         return ceil($total / $per_page);
     }
@@ -39,7 +39,7 @@ class Pag
         return $items = array_slice($this->items, $this->start, $this->per_page);
     }
 
-    public function set_per_page($per_page)
+    public function setPerPage($per_page)
     {
         return $this->per_page = $per_page;
     }
@@ -57,7 +57,7 @@ class Pag
                 default:
                     $uri[$num] .= "?";
             }
-            $html .= '<div class="page-item"><a href="' . implode($uri) . 'page=' . $this->id . '">-' . $this->num_page . '-</a></div>';
+            $html .= '<div class="page-item"><a href=" ' . implode($uri) . 'page=' . $this->id . '">-' . $this->num_page . '-</a></div>';
             $this->num_page++;
             $this->id++;
         }

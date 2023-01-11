@@ -1,6 +1,6 @@
 <div class="main-content">
         <div class="action-list">
-            <div class="action"><a href="/admin/users/edit?id=<?php echo $user['id']; ?>">Редактировать пользователя</a></div>
+            <div class="action"><a href="/admin/users/edit/?id=<?php echo $user['id']; ?>">Редактировать пользователя</a></div>
             <div class="main">
                     <table class="table">
                         <tr class="table-row" style="background-color: lightcyan">
