@@ -1,25 +1,64 @@
- <div class="main"><br>
-            <div class="sort-menu">Сортировать по цене:
-                <a href="/items/sort/?by=price&method=DESC">по убыванию</a>
-                /
-                <a href="/items/sort/?by=price&method=ASC">по возрастанию</a>
-            </div>
-            <div class="items-list">
-            <?php
-            foreach($items as $item) {
-            echo '<div class="item-content">
-                          <div class="item-img"><img src="/storage/images/'.$item['image'].'" width="200" height="190"></div>
-                          <div class="item-text"><h3><a href="/items/show/?id='.$item['id'].'">'.$item['name'].'</a></h3></div>
-                          <div ><span>'.$item['price'].' руб.</span></div>
-                          <div onclick="addToCart(this)" class="btn-cart">
-                              <input type="hidden" id="name'.$item['id'].'" name="id" value="'.$item['id'].'">
-                              <button class="btn-cart-add" type="button" value="'.$item['id'].'">В КОРЗИНУ</button>
-                          </div>
-                   </div>';
-                }?>
-            </div>
-            <div class="pages-list">
-                <?php echo $pagination; ?>
-            </div><br>
- </div>
+<!-- </div>-->
+ <div class="section">
+     <!-- container -->
+     <div class="container">
+         <div class="row">
+             <!-- STORE -->
+             <div id="store" class="col-md-9">
+                 <!-- store top filter -->
+                 <div class="store-filter clearfix">
+                     <div class="store-sort">
+                         <label>
+                             <b>Сортировать:</b>
+                             <a href="/items/sort/?by=price&method=DESC">по убыванию</a>
+                                             /
+                             <a href="/items/sort/?by=price&method=ASC">по возрастанию</a>
+                         </label>
+                     </div>
+                 </div>
+                 <!-- /store top filter -->
+                    <div class="row">
+                 <!-- store products -->
+                        <!-- product -->
+                 <?php
+                 foreach($items as $item) {
+                     echo '  <div class="col-md-4 col-xs-6">
+                         <div class="product">
+                             <div class="product-img">
+                                 <img src="/storage/images/'.$item['image'].'" alt="item-img" width="200" height="200">
+                                 <div class="product-label">
+                                     <span class="sale">-30%</span>
+                                     <span class="new">NEW</span>
+                                 </div>
+                             </div>
+                             <div class="product-body">
+                                 <h3 class="product-name"><a href="/items/show/?id='.$item['id'].'">'.$item['name'].'</a></h3>
+                                 <h4 class="product-price">'.$item['price'].' руб.<del class="product-old-price">'.$item['price'] + 1000 .'</del></h4>
+                                 <div class="product-rating">
+                                 </div>
+                             </div>
+                             <div onclick="addToCart(this)" class="add-to-cart">
+                                 <input type="hidden" id="name'.$item['id'].'" name="id" value="'.$item['id'].'">
+                                 <button class="add-to-cart-btn" value="'.$item['id'].'" type="button">
+                                 <i class="fa fa-shopping-cart"></i>В КОРЗИНУ</button>
+                             </div>
+                         </div>
+                         </div>
+                     ';
+                 }?>
+                    </div>
+                        <!-- store bottom filter -->
+                        <div class="store-filter clearfix">
+                            <ul class="store-pagination">
+                                <?php echo $pagination; ?>
+                            </ul>
+                        </div>
+                     <!-- /product -->
+                 </div>
+                 <!-- /store products -->
+                </div>
+             </div>
+             <!-- /STORE -->
+         </div>
+     <!-- /container -->
 <script src="/js/script.js"></script>

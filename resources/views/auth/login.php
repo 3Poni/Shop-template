@@ -1,43 +1,66 @@
 <?php
 $_SESSION['token'] = bin2hex(random_bytes(32));
 ?>
- <br>
-    <div class="main">
-        <div><h2>Форма входа</h2></div><br>
-            <?php
-            if(isset($_SESSION['admin'])){
-                echo '<div class="nav-itm">
-                <a href="/admin" class="menu">Личный кабинет администратора</a>
-                </div>';
-                echo 'Вы - Администратор';
-                echo "<br><br><b><a href='/logout'>Выйти</a></b>";
-                }
-                elseif(isset($_SESSION['user'])){;
-                    echo '<div class="nav-itm">
-                <a href="/user" class="menu">Личный кабинет пользователя</a>
-                </div>';
-                    echo 'Вы - Пользователь с логином: '.$_SESSION['user']['login'];
-                   echo "<br><br><b><a href='/logout'>Выйти</a></b>";
-                }
-            else{
-                echo '
-                <form class="form" action="/login" method="post">
-                     <input type="hidden" name="token" id="token" value="'.$_SESSION['token'].'">
-                     <label for="login">Логин</label><br>
-                     <input class="input-text" type="text" oninput="validate(this)" id="login" name="login" placeholder="введите ваш логин"><br>
-                     <label for="login">Пароль</label><br>
-                     <input type="password" id="pass" name="pass" placeholder="введите ваш пароль"><br><br>
-                     <input class="button-submit" type="submit" value="Войти">
-                </form><br><br>
-                <div style="color: green"><h3><a href="/register">Зарегистрироваться</a></h3></div>
-                ';
-            }
-            ?>
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+            <!-- row -->
+        <div class="row">
+            <div class="col-md-7">
+                    <!-- Form Details -->
+                <div class="row">
+                    <div class="billing-details col-md-4 col-xs-6">
+                            <div class="section-title">
+                                <h3 class="title">Форма входа</h3>
+                            </div>
+                            <?php
+                            if(isset($_SESSION['admin'])){
+                                echo '<div class="btn-link">
+                                            <a href="/admin" class="menu">Личный кабинет администратора</a>
+                                            </div><br>';
+                                echo 'Вы - Администратор';
+                                echo "<br><a href='/logout'>Выйти</a></b>";
+                            }
+                            elseif(isset($_SESSION['user'])){;
+                                echo '<div class="btn-link">
+                                            <a href="/user" class="menu">Личный кабинет пользователя</a>
+                                            </div><br><br><br>';
+                                echo 'Вы - Пользователь с логином: '.$_SESSION['user']['login'];
+                                echo "<br><b><a href='/logout'>Выйти</a></b>";
+                            }
+                            else{
+                                echo '
+                            <div>
+                            <form class="form" action="/login" method="post">
+                            <input type="hidden" name="token" id="token" value="'.$_SESSION['token'].'">
+                            <div class="form-group">
+                                <input class="input" type="text" id="login" name="login" placeholder="Введите Ваш логин">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="password" id="pass" name="pass" placeholder="Введите Ваш пароль">
+                            </div>
+                            <div>
+                                <input class="primary-btn order-submit" type="submit" value="Войти">
+                            </div>
+                        </div><br>
+                            <div class="btn-link mt-md-3">
+                                <h3>
+                                    <a href="/register">Регистрация</a>
+                                </h3>
+                            </div>
+                        </form>
+                        </div
+                         ';
+                            }
+                            ?>
+                        <!-- /Form Details -->
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+    <!-- /container -->
     </div>
-<script>
-    function validate(el)
-    {
-        let a = el.value
-            console.log(a)
-    }
-</script>
+</div>
+<!-- /SECTION -->
