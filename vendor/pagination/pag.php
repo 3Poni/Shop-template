@@ -4,15 +4,12 @@ namespace Vendor\Pagination;
 
 class Pag
 {
-
-    public int $count_pages;
-    public int $id = 0;
-    public int $num_page = 1;
-    public int $start;
-    public int $page;
-    public int $total;
-    public int $per_page;
-    public array $items = array();
+    private int $id = 0;
+    private int $num_page = 1;
+    private int $start;
+    private int $page;
+    private int $per_page;
+    private array $items = array();
 
     public function __construct(array $items, int $per_page)
     {
@@ -20,16 +17,14 @@ class Pag
         $this->per_page = $per_page;
         $this->page = $_GET['page'] ?? 0;
         $this->start = $this->page == 0 ? 0 : ($this->per_page * $this->page);
-        $this->total = $this->totalCount($items);
-        $this->count_pages = $this->countPages($this->total, $this->per_page);
     }
 
-    public function totalCount($items): int
+    private function countItems($items): int
     {
         return count($items);
     }
 
-    public function countPages($total, $per_page): int
+    private function countPages($total, $per_page): int
     {
         return ceil($total / $per_page);
     }
@@ -47,7 +42,8 @@ class Pag
     public function links(): string
     {
         $html = '';
-        for ($i = 0; $i < $this->count_pages; $i++) {
+        $count_pages = $this->countPages($this->countItems($this->items), $this->per_page);
+        for ($i = 0; $i < $count_pages; $i++) {
             $uri = preg_split('/.page=./', $_SERVER['REQUEST_URI']);
             $num = count($uri) - 1;
             switch (1) {
@@ -57,12 +53,15 @@ class Pag
                 default:
                     $uri[$num] .= "?";
             }
-            $html .= '<div class="page-item"><a href=" ' . implode($uri) . 'page=' . $this->id . '">-' . $this->num_page . '-</a></div>';
+            if($i === $this->page){
+                $html .= '<li class="active"><a href=" ' . implode($uri) . 'page=' . $this->id . '">' . $this->num_page . '</a></li>';
+            }else{
+                $html .= '<li><a href=" ' . implode($uri) . 'page=' . $this->id . '">' . $this->num_page . '</a></li>';
+            }
             $this->num_page++;
             $this->id++;
         }
         return $html;
-
     }
 
     public function __toString(): string

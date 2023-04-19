@@ -108,25 +108,37 @@ a.menu:hover {
     background-color: lightskyblue;
     box-shadow: 3px 3px 3px rgba(0,0,0,0.1) ;
 }
-.cart-stepper {
-    width: 120px;
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-.btn-qty {
-    margin-left: 3px;
-    margin-right: 3px;
-    width: 28px;
-    height: 26px;
-    border-radius: 5px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-color: gray;
-    border-style: solid;
-}
+/*.cart-stepper {*/
+/*    width: 120px;*/
+/*    height: 50px;*/
+/*    justify-content: center;*/
+/*    text-align: center;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*}*/
+/*.btn-qty {*/
+/*    position: relative;*/
+/*    border: 2px solid transparent;*/
+/*    height: 40px;*/
+/*    padding: 0 30px;*/
+/*    background-color: #ef233c;*/
+/*    color: #FFF;*/
+/*    text-transform: uppercase;*/
+/*    font-weight: 700;*/
+/*    border-radius: 40px;*/
+/*    -webkit-transition: 0.2s all;*/
+/*    transition: 0.2s all;*/
+    /*margin-left: 3px;*/
+    /*margin-right: 3px;*/
+    /*width: 28px;*/
+    /*height: 26px;*/
+    /*border-radius: 5px;*/
+    /*text-align: center;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*border-color: gray;*/
+    /*border-style: solid;*/
+/*}*/
 .btn-min {
     width: 40px;
     height: 30px;

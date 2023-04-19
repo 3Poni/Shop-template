@@ -3,26 +3,20 @@
 namespace app\Controllers\Auth;
 
 use App\Controllers\Controller;
-use app\Models\User;
+use App\Services\AuthService;
 
-class RegisterController extends Controller {
+class RegisterController extends Controller
+{
 
-    public static function register() {
-            $login = $_POST['login'];
-            $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-            $database = new User;
-            $columns = array('login', 'password');
-            $q_data = array($login, $pass);
-            $column = 'login';
-            if($database->where($login, $column)) {
-                echo 'Пользователь с таким логином уже существует';
-            }else {
-                $users = $database->add($columns, $q_data);
-                header('Location: /login');
-            }
+    public static function register()
+    {
+        $login = $_POST['login'];
+        $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        AuthService::addUser($login, $password);
+    }
 
-        }
-    public static function index() {
+    public static function index()
+    {
         $view = "/../auth/register.php";
         require_once __DIR__ . '/../../../resources/views/layout/mainlayout.php';
     }

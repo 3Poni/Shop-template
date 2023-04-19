@@ -8,10 +8,10 @@
                 <?php
                 if(!empty($_SESSION['cart'])){
                     foreach($items as $item) {
-                        echo '<div class="item-cart"><li><h2><a href="items/show/?id='.$item['id'].'">Товар - '.$item['name'].'</a></h2><br>';
-                        echo "<div id='qty'>Количество штук: ".$item['qty'].'</div><br>';
-                        echo "Цена:".$item['price'].'<br>';
-                        echo "Сумма:".$item['price']*$item['qty'];
+                        echo '<div class="item-cart"><li><h2><a href="items/show/?id='.$item['id'].'">Товар -  '.$item['name'].'</a></h2><br>';
+                        echo "<div id='qty'>Количество штук:  ".$item['qty'].'</div><br>';
+                        echo "Цена: " .$item['price'].'<br>';
+                        echo "Сумма: " .$item['price']*$item['qty'];
                         echo '<form method="post" action="/cart/add">
                         <input type="hidden" name="id" value="'.$item['id'].'">
                         <input class="btn button-submit" type="submit" value="Добавить в коризну" style="margin-top: 10px"></form>
@@ -27,7 +27,7 @@
                 <div class="item-cart">
                     <ul>
                         <li>Общее количество товаров: ' . ($_SESSION['cart.qty']).'</li>
-                        <li>Итого:' . $sum.'</li>
+                        <li>Итого: ' . $sum.'</li>
                         <form method="post" action="/cart/buy">';
                                 foreach ($items as $item) {
                             echo '<input type="hidden" name="'.$item['id'].'" value="'.$item['qty'].'">';

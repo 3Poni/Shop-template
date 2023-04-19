@@ -110,24 +110,10 @@
 		</nav>
 		<!-- /NAVIGATION -->
 		<!-- SECTION -->
+        <section>
         <?php require_once __DIR__ . $view; ?>
+        </section>
 		<!-- /SECTION -->
-		<!-- NEWSLETTER -->
-		<div id="newsletter" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="newsletter">
-						</div>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /NEWSLETTER -->
 		<!-- FOOTER -->
 		<footer id="footer">
 			<!-- top footer -->
@@ -181,5 +167,6 @@
 		<script src="/main/js/nouislider.min.js"></script>
 		<script src="/main/js/jquery.zoom.min.js"></script>
 		<script src="/main/js/main.js"></script>
+        <script src="/main/js/cart.js"></script>
 	</body>
 </html>

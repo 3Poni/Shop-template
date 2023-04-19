@@ -15,7 +15,8 @@ class App
             $routeDispatcher->process();
             self::$routes [] = $routeDispatcher->getRoute();
         }
-        if ( !in_array(urldecode($_SERVER['REQUEST_URI']), self::$routes)) {
+        if (!in_array(urldecode($_SERVER['REQUEST_URI']), self::$routes)) {
+            header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
             echo '404 - страница не найдена';
         }
     }

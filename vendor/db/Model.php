@@ -13,7 +13,6 @@ class Model
     {
         $this->db = new Connection();
         $this->file_manager = new ImageManager();
-//        $this->builder = new SelectBuilder(self::getTableName());
     }
 
     private static function getTableName(): string

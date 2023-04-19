@@ -40,6 +40,7 @@ Route::get('/category/show/?id={id}', 'Category\ShowController@show');
 Route::get('/user', 'User\IndexController@index');
 Route::get('/user/settings', 'User\Settings\IndexController@index');
 Route::get('/user/orders', 'User\Orders\IndexController@index');
+Route::get('/user/orders/pay/?id={id}', 'User\Orders\PayController@pay');
 Route::get('/user/orders/show/?id={id}', 'User\Orders\ShowController@show');
 Route::get('/user/edit/?id={id}', 'User\Settings\EditController@edit');
 Route::post('/user/update', 'User\Settings\UpdateController@update');
@@ -48,6 +49,10 @@ Route::post('/user/delete', 'User\Settings\DeleteController@delete');
 //
 // -- Admin Group
     Route::get('/admin', 'Admin\IndexController@index');
+    Route::get('/admin/settings', 'Admin\Settings\IndexController@index');
+    Route::get('/admin/edit/?id={id}', 'Admin\Settings\EditController@edit');
+    Route::post('/admin/update', 'Admin\Settings\UpdateController@update');
+    Route::post('/admin/delete', 'Admin\Settings\DeleteController@delete');
     // Items
     Route::get('/admin/items', 'Admin\Items\IndexController@index');
     Route::get('/admin/items/create', 'Admin\Items\CreateController@create');

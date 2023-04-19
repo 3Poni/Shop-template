@@ -3,6 +3,11 @@
      <!-- container -->
      <div class="container">
          <div class="row">
+             <div class="col-md-12">
+                 <div class="section-title">
+                     <h3 class="title">Витрина товаров</h3>
+                 </div>
+             </div>
              <!-- STORE -->
              <div id="store" class="col-md-9">
                  <!-- store top filter -->
@@ -21,7 +26,22 @@
                  <!-- store products -->
                         <!-- product -->
                  <?php
-                 foreach($items as $item) {
+                 foreach($items as $k => $item) {
+                     if(!empty($_SESSION['cart'][$item['id']])){
+                         $cart = '<div class="add-to-cart">
+                                    <div class="cart-stepper">
+                                      <input onclick="minCart(this)" class="btn-qty" type="button"  value="-">
+                                      <input type="text" id="'.$item['id'].'" class="text-qty" value="'.$_SESSION['cart'][$item['id']]['qty'].'" disabled>
+                                      <input onclick="plusCart(this)" class="btn-qty" type="button"   value="+">
+                                    </div>
+                          </div>';
+                     }else{
+                         $cart = '<div onclick="addToCart(this)" class="add-to-cart">
+                                     <input type="hidden" id="name'.$item['id'].'" name="id" value="'.$item['id'].'">
+                                     <button class="add-to-cart-btn" value="'.$item['id'].'" type="button">
+                                     <i class="fa fa-shopping-cart"></i>В КОРЗИНУ</button>
+                                  </div>';
+                     }
                      echo '  <div class="col-md-4 col-xs-6">
                          <div class="product">
                              <div class="product-img">
@@ -37,11 +57,7 @@
                                  <div class="product-rating">
                                  </div>
                              </div>
-                             <div onclick="addToCart(this)" class="add-to-cart">
-                                 <input type="hidden" id="name'.$item['id'].'" name="id" value="'.$item['id'].'">
-                                 <button class="add-to-cart-btn" value="'.$item['id'].'" type="button">
-                                 <i class="fa fa-shopping-cart"></i>В КОРЗИНУ</button>
-                             </div>
+                             '. $cart .'
                          </div>
                          </div>
                      ';
@@ -61,4 +77,3 @@
              <!-- /STORE -->
          </div>
      <!-- /container -->
-<script src="/js/script.js"></script>

@@ -2122,3 +2122,21 @@ WARNING [2]Undefined array key 0 file: E:\OpenServer\domains\pet-project\resourc
 **start**
 WARNING [2]Trying to access array offset on value of type null file: E:\OpenServer\domains\pet-project\resources\views\items\show.php line: 15
 **end**
+**start**
+WARNING [2]include(../Vendor/DB/Drivers/sqlite1.php): Failed to open stream: No such file or directory file: C:\OSPanel\domains\shop-php\test\vendor\autoload.php line: 5
+**end**
+**start**
+WARNING [2]include(): Failed opening '../Vendor/DB/Drivers/sqlite1.php' for inclusion (include_path='.') file: C:\OSPanel\domains\shop-php\test\vendor\autoload.php line: 5
+**end**
+**start**
+ErrorClass "Vendor\DB\Drivers\sqlite1" not found file: C:\OSPanel\domains\shop-php\test\vendor\db\ConnectionManager.php line: 21
+**end**
+**start**
+WARNING [2]include(../Vendor/DB/Drivers/sqlite1.php): Failed to open stream: No such file or directory file: C:\OSPanel\domains\shop-php\test\vendor\autoload.php line: 5
+**end**
+**start**
+WARNING [2]include(): Failed opening '../Vendor/DB/Drivers/sqlite1.php' for inclusion (include_path='.') file: C:\OSPanel\domains\shop-php\test\vendor\autoload.php line: 5
+**end**
+**start**
+ErrorClass "Vendor\DB\Drivers\sqlite1" not found file: C:\OSPanel\domains\shop-php\test\vendor\db\ConnectionManager.php line: 21
+**end**

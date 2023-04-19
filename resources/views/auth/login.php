@@ -5,35 +5,42 @@ $_SESSION['token'] = bin2hex(random_bytes(32));
 <div class="section">
     <!-- container -->
     <div class="container">
-            <!-- row -->
+        <!-- row -->
         <div class="row">
             <div class="col-md-7">
-                    <!-- Form Details -->
+                <!-- Form Details -->
                 <div class="row">
-                    <div class="billing-details col-md-4 col-xs-6">
-                            <div class="section-title">
-                                <h3 class="title">Форма входа</h3>
-                            </div>
-                            <?php
-                            if(isset($_SESSION['admin'])){
-                                echo '<div class="btn-link">
-                                            <a href="/admin" class="menu">Личный кабинет администратора</a>
-                                            </div><br>';
-                                echo 'Вы - Администратор';
-                                echo "<br><a href='/logout'>Выйти</a></b>";
-                            }
-                            elseif(isset($_SESSION['user'])){;
-                                echo '<div class="btn-link">
-                                            <a href="/user" class="menu">Личный кабинет пользователя</a>
-                                            </div><br><br><br>';
-                                echo 'Вы - Пользователь с логином: '.$_SESSION['user']['login'];
-                                echo "<br><b><a href='/logout'>Выйти</a></b>";
-                            }
-                            else{
-                                echo '
+                    <div class="billing-details col-md-6 col-xs-6">
+                        <div class="section-title">
+                            <h3 class="title">Форма входа</h3>
+                        </div>
+                        <?php
+                        if (isset($_SESSION['admin'])) {
+                            echo '<div class=" form-group btn-link">
+                                           <h4><a href="/admin" class="menu">Личный кабинет администратора</a></h4>
+                                      </div><br>';
+                            echo '<div class="form-group">
+                                            <span>Вы - Администратор<span>
+                                       </div><br>';
+                            echo '<div class=" form-group btn-link">
+                                        <a href="/logout"><b>Выйти</b></a>
+                                      </div>';
+                        } elseif (isset($_SESSION['user'])) {
+                            ;
+                            echo '<div class=" form-group btn-link">
+                                            <h4><a href="/user" class="menu">Личный кабинет пользователя</a></h4>
+                                       </div><br>';
+                            echo '<div class="form-group">
+                                            <span>Вы - Пользователь с логином: ' . $_SESSION['user']['login'] . '<span>
+                                       </div><br>';
+                            echo '<div class=" form-group btn-link">
+                                        <h5><a href="/logout"><b>Выйти</b></a></h5>
+                                      </div>';
+                        } else {
+                            echo '
                             <div>
                             <form class="form" action="/login" method="post">
-                            <input type="hidden" name="token" id="token" value="'.$_SESSION['token'].'">
+                            <input type="hidden" name="token" id="token" value="' . $_SESSION['token'] . '">
                             <div class="form-group">
                                 <input class="input" type="text" id="login" name="login" placeholder="Введите Ваш логин">
                             </div>
@@ -52,15 +59,15 @@ $_SESSION['token'] = bin2hex(random_bytes(32));
                         </form>
                         </div
                          ';
-                            }
-                            ?>
+                        }
+                        ?>
                         <!-- /Form Details -->
                     </div>
                 </div>
             </div>
             <!-- /row -->
         </div>
-    <!-- /container -->
+        <!-- /container -->
     </div>
 </div>
 <!-- /SECTION -->
