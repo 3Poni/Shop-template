@@ -4,9 +4,9 @@ session_start();
 use Vendor\Errorhandler\ErrorHandler;
 use Vendor\Routing\App;
 
-require "../vendor/errorhandler/errorhandler.php";
+require "../Vendor/Errorhandler/errorhandler.php";
 
-require "../vendor/routing/app.php";
+require "../Vendor/Routing/App.php";
 
 
 $e = new ErrorHandler;
@@ -14,11 +14,11 @@ $e->register();
 
 require  "../config.php";
 
-require  "../vendor/autoload.php";
+require  "../Vendor/autoload.php";
 
-require "../routes/api.php";
+require "../Routes/api.php";
 
-require  "../routes/web.php";
+require  "../Routes/web.php";
 
 $app = (new App)->run();
 

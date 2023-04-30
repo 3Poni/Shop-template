@@ -16,7 +16,7 @@ defined("DBPATH") or define("DBPATH", "../database/database.sqlite");   // for s
  *  Значение "0" выключает демонстрацию ошибок, оставляя только "500 Server ERROR",
  *  при этом все ошибки записываются в log файл
  */
-const ERROR_HANDLER = 0;
+const ERROR_HANDLER = 1;
 
 /**
  *  Путь для хранение изображений

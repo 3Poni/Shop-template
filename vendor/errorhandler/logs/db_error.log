@@ -2140,3 +2140,21 @@ WARNING [2]include(): Failed opening '../Vendor/DB/Drivers/sqlite1.php' for incl
 **start**
 ErrorClass "Vendor\DB\Drivers\sqlite1" not found file: C:\OSPanel\domains\shop-php\test\vendor\db\ConnectionManager.php line: 21
 **end**
+**start**
+WARNING [2]include(../Vendor/Routing/Route.php): Failed to open stream: No such file or directory file: /home/computer/projects/shop-php/test/vendor/autoload.php line: 5
+**end**
+**start**
+WARNING [2]include(): Failed opening '../Vendor/Routing/Route.php' for inclusion (include_path='.:/usr/share/php') file: /home/computer/projects/shop-php/test/vendor/autoload.php line: 5
+**end**
+**start**
+ErrorClass "Vendor\Routing\Route" not found file: /home/computer/projects/shop-php/test/routes/api.php line: 6
+**end**
+**start**
+WARNING [2]include(../Vendor/Routing/Route.php): Failed to open stream: No such file or directory file: /home/computer/projects/shop-php/test/vendor/autoload.php line: 5
+**end**
+**start**
+WARNING [2]include(): Failed opening '../Vendor/Routing/Route.php' for inclusion (include_path='.:/usr/share/php') file: /home/computer/projects/shop-php/test/vendor/autoload.php line: 5
+**end**
+**start**
+ErrorClass "Vendor\Routing\Route" not found file: /home/computer/projects/shop-php/test/routes/api.php line: 6
+**end**

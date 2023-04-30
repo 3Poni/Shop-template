@@ -1,1 +1,3 @@
 todo.txt
+/vendor/predis
+/vendor/errorhandler/logs
