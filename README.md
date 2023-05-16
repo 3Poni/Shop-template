@@ -7,19 +7,12 @@ Download this repository, extract
 You should have installed:
   -php 8.0+
   
-From extraction folder RUN these commands:
-
-```bash
-composer update
-php artisan storage:link
-php artisan serve
-```
-
 ## Usage
 
 Go to repository folder "/public"
 
-Run this command:
+From extraction folder RUN this command:
+
 
 ```
 php -S 127.0.0.1:8000
