@@ -4,7 +4,6 @@ namespace Vendor\Validation;
 
 class Validation
 {
-
     private array $data = [];
     public string $errors = '';
 

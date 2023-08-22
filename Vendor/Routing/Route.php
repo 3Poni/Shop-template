@@ -7,7 +7,13 @@ class Route
 {
     private static array $routesGet = [];
     private static array $routesPost = [];
+    private static ?array $routesMiddleware = [];
 
+
+    public static function middleware(): array
+    {
+        return self::$routesMiddleware;
+    }
     /**
      * @return array
      */

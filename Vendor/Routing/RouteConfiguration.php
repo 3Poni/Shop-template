@@ -8,6 +8,7 @@ class RouteConfiguration
     public string $route;
     public string $controller;
     public string $action;
+    public ?string $middleware = null;
 
     /**
      * RouteConfiguration constructor.
@@ -20,6 +21,11 @@ class RouteConfiguration
         $this->route = $route;
         $this->controller = $controller;
         $this->action = $action;
+    }
+
+    public function middleware(string $middleware)
+    {
+        $this->middleware .= ',' . $middleware;
     }
 }
 

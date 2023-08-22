@@ -9,14 +9,15 @@ class Pag
     private int $start;
     private int $page;
     private int $per_page;
-    private array $items = array();
-
-    public function __construct(array $items, int $per_page)
+    private array $items;
+    private PagRenderInterface $pagRender;
+    public function __construct(array $items, int $per_page, PagRenderInterface $pagRender)
     {
         $this->items = $items;
         $this->per_page = $per_page;
         $this->page = $_GET['page'] ?? 0;
         $this->start = $this->page == 0 ? 0 : ($this->per_page * $this->page);
+        $this->pagRender = $pagRender;
     }
 
     private function countItems($items): int
@@ -41,11 +42,11 @@ class Pag
 
     public function links(): string
     {
-        $html = '';
         $count_pages = $this->countPages($this->countItems($this->items), $this->per_page);
         for ($i = 0; $i < $count_pages; $i++) {
             $uri = preg_split('/.page=./', $_SERVER['REQUEST_URI']);
             $num = count($uri) - 1;
+
             switch (1) {
                 case preg_match('/\?(?!page)/', $_SERVER['REQUEST_URI']):
                     $uri[$num] .= "&";
@@ -53,15 +54,20 @@ class Pag
                 default:
                     $uri[$num] .= "?";
             }
+
             if($i === $this->page){
-                $html .= '<li class="active"><a href=" ' . implode($uri) . 'page=' . $this->id . '">' . $this->num_page . '</a></li>';
+
+                $this->pagRender->addLink($uri, $this->id, $this->num_page, 'active');
+
             }else{
-                $html .= '<li><a href=" ' . implode($uri) . 'page=' . $this->id . '">' . $this->num_page . '</a></li>';
+
+                $this->pagRender->addLink($uri, $this->id, $this->num_page);
+
             }
             $this->num_page++;
             $this->id++;
         }
-        return $html;
+        return $this->pagRender->getLinks();
     }
 
     public function __toString(): string

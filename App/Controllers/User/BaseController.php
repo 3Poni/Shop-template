@@ -7,11 +7,11 @@ use App\Controllers\Controller;
 class BaseController extends Controller
 {
 
-    public function __construct()
-    {
-        if (!$_SESSION['user']) {
-            header('Location: /');
-        }
-    }
+//    public function __construct()
+//    {
+//        if (!$_SESSION['user']) {
+//            header('Location: /');
+//        }
+//    }
 
 }
