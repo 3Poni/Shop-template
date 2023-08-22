@@ -13,21 +13,17 @@ class StoreController extends Controller
             $id = $_POST['id'];
             $database = new Item;
             $item = $database->whereId($id)[0];
-            if(!empty($item)) {
-                if (isset($_SESSION['cart'][$item['id']])) {
-                    $_SESSION['cart'][$item['id']]['qty'] += 1;
-                } else {
-                    $_SESSION['cart'][$item['id']] = [
-                        'name' => $item['name'],
-                        'id' => $item['id'],
-                        'price' => $item['price'],
-                        'qty' => 1,
-                    ];
-                }
-                $_SESSION['cart.qty'] = !empty($_SESSION['cart.qty']) ? ++$_SESSION['cart.qty'] : 1;
-                echo $_SESSION['cart.qty'];
+            if (isset($_SESSION['cart'][$item['id']])) {
+                $_SESSION['cart'][$item['id']]['qty'] += 1;
+            } else {
+                $_SESSION['cart'][$item['id']] = [
+                    'name' => $item['name'],
+                    'id' => $item['id'],
+                    'price' => $item['price'],
+                    'qty' => 1,
+                ];
             }
-            echo 'Something went wrong';
-            die;
+            $_SESSION['cart.qty'] = !empty($_SESSION['cart.qty']) ? ++$_SESSION['cart.qty'] : 1;
+            echo $_SESSION['cart.qty'];
         }
 }

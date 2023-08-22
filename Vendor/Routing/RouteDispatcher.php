@@ -6,7 +6,6 @@ namespace Vendor\Routing;
 class RouteDispatcher
 {
     private string $requestUri = '/';
-    private array $middlewareAllowed;
     private array $paramMap = [];
     private array $paramRequestMap = [];
     private RouteConfiguration $routeConfiguration;
@@ -15,10 +14,9 @@ class RouteDispatcher
      * RouteDispatcher constructor.
      * @param RouteConfiguration $routeConfiguration
      */
-    public function __construct(RouteConfiguration $routeConfiguration, $middlewareAllowed)
+    public function __construct(RouteConfiguration $routeConfiguration)
     {
         $this->routeConfiguration = $routeConfiguration;
-        $this->middlewareAllowed = $middlewareAllowed;
     }
 
     public function process()
@@ -53,27 +51,8 @@ class RouteDispatcher
     private function run()
     {
         if ($this->routeConfiguration->route == urldecode($_SERVER['REQUEST_URI'])) {
-            // 1 check middleware and if true run $this->render();
-            if ($this->middleware()) {
-                $this->render();
-            }
-            header('Location: /404');
-            // throw new exception NotAllowedException(405)
+            $this->render();
         }
-    }
-    private function middleware(): bool
-    {
-        // decide where from to execute middleware(bind in app array by name, or concrete path)
-        if(empty($this->routeConfiguration->middleware)) return true;
-        $middlewareArray = explode(',', $this->routeConfiguration->middleware);
-
-        foreach($middlewareArray as $name) {
-            if ( !empty($this->middlewareAllowed[0][$name])) {
-                return $this->middlewareAllowed[0][$name]->process();
-            }
-        }
-
-        return false;
     }
 
     private function render()
